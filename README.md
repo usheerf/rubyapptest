@@ -69,8 +69,8 @@ Steps to build docker image
 - This time minikube open the webui on your default browser.
 - **Minikube Dashboard** If you wish to monitor k8's then open another terminal and run `minkube dashboard` and keep it running
 
-![HomePage](images/1-home.png)
-![Healthcheck](images/2-healthcheck.png)
+![HomePage](Images/1-home.png)
+![Healthcheck](Images/2-healthcheck.png)
 
 
 ### Automated local deployment with a single script
