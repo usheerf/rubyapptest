@@ -10,11 +10,21 @@ loop {
 
   puts "#{method} #{path} #{version}"
 
+# Based on my quick reaading on below I have done my best to alter this code
+# https://blog.appsignal.com/2016/11/23/ruby-magic-building-a-30-line-http-server-in-ruby.html
   if path == "/healthcheck"
-    client.write("OK\r\n")
+    client.print "HTTP/1.1 200\r\n" 
+    client.print "Content-Type: text/html\r\n"
+    client.print "\r\n"
+    client.print "OK\r\n"
   else
-    client.write("Well, hello there!")
+    client.print "HTTP/1.1 200\r\n" 
+    client.print "Content-Type: text/html\r\n"
+    client.print "\r\n"
+    client.print "Well, hello there!\r\n"
   end
 
   client.close
 }
+
+

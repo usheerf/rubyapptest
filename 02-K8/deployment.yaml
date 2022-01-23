@@ -6,7 +6,7 @@ metadata:
   labels:
     app: rubyapp
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: rubyapp
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: rubyapp
-        image: usheerfotedar/rubyapptest-v1:latest
+        image: usheerfotedar/rubyapptest-v2:latest
         ports:
         - containerPort: 80
         readinessProbe:
