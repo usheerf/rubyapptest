@@ -1,0 +1,44 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rubyapp
+  labels:
+    app: rubyapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rubyapp
+  template:
+    metadata:
+      labels:
+        app: rubyapp
+    spec:
+      containers:
+      - name: rubyapp
+        image: usheerfotedar/rubyapptest-v1:latest
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /healthcheck
+            port: 80
+          initialDelaySeconds: 2
+          periodSeconds: 5
+          successThreshold: 1
+          failureThreshold: 2
+          timeoutSeconds: 2
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: rubyapp
+spec:
+  selector:
+    app: rubyapp
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
