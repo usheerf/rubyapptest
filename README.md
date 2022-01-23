@@ -5,8 +5,8 @@
 - [K8 Deployment](#k8-deployment)
 - [Issue identified during the test](#issue-identified-during-the-test)
 - [K8 Re-Deployment](#k8-re-deployment)
-- [Basic CI/CD](#basic-ci-cd)
-- [Future-improvement](#k8-re-deployment)
+- [Basic CI-CD](#basic-ci-cd)
+- [Future-improvement](#future-improvement)
 - [Automated local deployment with a single script](#automated-local-deployment-with-a-single-script)
 
 
@@ -69,12 +69,16 @@ Steps to build docker image
 - This time minikube open the webui on your default browser.
 - **Minikube Dashboard** If you wish to monitor k8's then open another terminal and run `minkube dashboard` and keep it running
 
+![HomePage](images/1-home.png)
+![Healthcheck](images/2-healthcheck.png)
+
+
 ### Automated local deployment with a single script
 - 1 step to deploy the docker build ruby application in kubernetes.
 - All you need to do is download the `deploy.sh` script and set permission `chmod +x deploy.sh` and execute `./deploy.sh` .
 - You can validate the Url opened in browser.
 
-### Basic CI/CD
+### Basic CI-CD
 - I have setup a simple github-action for checking my deployment.yaml file format
 - This can be further extended to deploying our application to K8 cluster or simpliy deploying this app to a minikube itself.
 
@@ -82,3 +86,4 @@ Steps to build docker image
 - Enable github actions to further deploy this application to a minikube container as part of master build or extend to deploy to heroku etc.
 - Currently we are using `replica:2` which can be further extended to use HPA scaling method.
 - Change K8's deployment to helm.
+- Enhance monitoring via Prometheus setup.
