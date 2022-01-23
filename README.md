@@ -1,10 +1,18 @@
 # Ruby Application Deployment
 
+- [Pre-requests](#pre-requests)
 - [Docker Setup](#docker-setup)
 - [K8 Deployment](#k8-deployment)
 - [Issue identified during the test](#issue-identified-during-the-test)
 - [K8 Re-Deployment](#k8-re-deployment)
+- [Basic CI/CD](#basic-ci-cd)
 - [Future-improvement](#k8-re-deployment)
+- [Automated local deployment with a single script](#automated-local-deployment-with-a-single-script)
+
+
+### Pre-requests 
+- Docker Desktop (Setup instruction [here](https://www.docker.com/products/docker-desktop))
+- Minikube (Setup instruction [here](https://minikube.sigs.k8s.io/docs/start/))
 
 ### Docker Setup
 
@@ -59,7 +67,18 @@ Steps to build docker image
 - **Note** : This is happening on the latest minikube version we have. If you are using the old version this might not be the case.
 - Expose the service now with `minikube service rubyapp`
 - This time minikube open the webui on your default browser.
-- **Minikube Dashboard** If you wish to monitor k8's then open another terminal and run `minkube dashboard` and keep it running.
+- **Minikube Dashboard** If you wish to monitor k8's then open another terminal and run `minkube dashboard` and keep it running
+
+### Automated local deployment with a single script
+- 1 step to deploy the docker build ruby application in kubernetes.
+- All you need to do is download the `deploy.sh` script and set permission `chmod +x deploy.sh` and execute `./deploy.sh` .
+- You can validate the Url opened in browser.
+
+### Basic CI/CD
+- I have setup a simple github-action for checking my deployment.yaml file format
+- This can be further extended to deploying our application to K8 cluster or simpliy deploying this app to a minikube itself.
 
 ### Future improvement 
-- 
+- Enable github actions to further deploy this application to a minikube container as part of master build or extend to deploy to heroku etc.
+- Currently we are using `replica:2` which can be further extended to use HPA scaling method.
+- Change K8's deployment to helm.
